@@ -89,52 +89,43 @@
     z-index: 5;
   }
 
-  // Speech bubble
-  &__speech {
+  // Floating effect container - independent of character
+  &__float {
     position: absolute;
-    top: -30px;
+    bottom: 50px;
     left: 50%;
-    transform: translateX(-50%);
-    background: #fff;
-    color: #333;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 12px;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    animation: wam-speech 0.6s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
     pointer-events: none;
-    z-index: 12;
-
-    // Speech bubble tail
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      margin-left: -5px;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid #fff;
-    }
+    z-index: 20;
   }
 
-  &__points {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    font-size: 22px;
+  &__float-speech {
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 13px;
     font-weight: bold;
+    padding: 4px 11px;
+    border-radius: 10px;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    animation: wam-float-speech 1.4s ease-out forwards;
+  }
+
+  &__float-points {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;
     color: #FFD700;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 215, 0, 0.6);
-    animation: wam-points-fly 0.8s ease-out forwards;
-    pointer-events: none;
-    z-index: 10;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.6);
+    animation: wam-float-points 1.5s ease-out forwards;
 
     &--negative {
       color: #FF4444;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 68, 68, 0.6);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 16px rgba(255, 68, 68, 0.6);
     }
   }
 }
@@ -172,26 +163,6 @@
   }
 }
 
-// Speech bubble pop in then float up
-@keyframes wam-speech {
-  0% {
-    transform: translateX(-50%) scale(0) translateY(10px);
-    opacity: 0;
-  }
-  20% {
-    transform: translateX(-50%) scale(1.1) translateY(0);
-    opacity: 1;
-  }
-  35% {
-    transform: translateX(-50%) scale(1) translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-50%) scale(0.9) translateY(-25px);
-    opacity: 0;
-  }
-}
-
 // Screen shake
 @keyframes wam-shake {
   0%, 100% { transform: translate(0, 0); }
@@ -202,22 +173,48 @@
   75% { transform: translate(-1px, 1px); }
 }
 
-// Points fly up
-@keyframes wam-points-fly {
+// Speech: pop in, float up slowly, fade
+@keyframes wam-float-speech {
   0% {
-    transform: translateY(0) scale(0.5);
+    transform: translateY(0) scale(0.3);
     opacity: 0;
   }
-  20% {
-    transform: translateY(-5px) scale(1.3);
+  12% {
+    transform: translateY(-6px) scale(1.1);
     opacity: 1;
   }
-  50% {
-    transform: translateY(-20px) scale(1.1);
+  22% {
+    transform: translateY(-12px) scale(1);
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-70px) scale(0.85);
+    opacity: 0;
+  }
+}
+
+// Points: pop in bigger, float up faster and higher
+@keyframes wam-float-points {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(-8px) scale(1.4);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(-18px) scale(1);
+    opacity: 1;
+  }
+  55% {
     opacity: 1;
   }
   100% {
-    transform: translateY(-45px) scale(0.8);
+    transform: translateY(-110px) scale(0.7);
     opacity: 0;
   }
 }
