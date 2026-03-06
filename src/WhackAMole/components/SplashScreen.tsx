@@ -9,12 +9,13 @@ export interface SplashScreenProps {
 const SplashScreen = React.memo(
   forwardRef<HTMLDivElement, SplashScreenProps>(function SplashScreen({ onDone }, ref) {
     return (
-      <div className="wam-splash" ref={ref} onAnimationEnd={onDone}>
+      <div className="wam-splash" ref={ref}>
         <img
           className="wam-splash__img"
           src={posterImg}
           alt="Whack-A-Mole"
           draggable={false}
+          onAnimationEnd={onDone}
         />
       </div>
     );
