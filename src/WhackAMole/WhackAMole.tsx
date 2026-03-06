@@ -1,8 +1,9 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import type { WhackAMoleProps, Character } from './types';
 import { useWhackAMole } from './hooks/useWhackAMole';
 import ScoreBoard from './components/ScoreBoard';
 import GameBoard from './components/GameBoard';
+import SplashScreen from './components/SplashScreen';
 import guitaristImg from './img/guitarist.png';
 import hackerImg from './img/hacker.png';
 import ghostImg from './img/ghost.png';
@@ -20,6 +21,7 @@ const DEFAULT_CHARACTERS: Character[] = [
 const WhackAMole = React.memo(
   forwardRef<HTMLDivElement, WhackAMoleProps>((props, ref) => {
     const { t } = useLocale();
+    const [showSplash, setShowSplash] = useState(true);
     const {
       totalTime = 30,
       gridSize = 3,
@@ -57,6 +59,8 @@ const WhackAMole = React.memo(
 
     return (
       <div className="wam" ref={ref}>
+        {showSplash && <SplashScreen onDone={() => setShowSplash(false)} />}
+
         {/* Start Modal */}
         {!isPlaying && !isGameOver && (
           <div className="wam__overlay">
