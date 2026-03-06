@@ -69,7 +69,6 @@ const WhackAMole = React.memo(
                   <span className="wam__modal-title-dash">- A -</span>
                   <span className="wam__modal-title-line">MOLE!</span>
                 </h1>
-                <p className="wam__modal-subtitle">{t('subtitle')}</p>
               </div>
 
               <div className="wam__modal-rules">
