@@ -93,7 +93,7 @@ const Hole = React.memo(
             <>
               <img
                 className="wam-hole__avatar"
-                src={hole.character.image}
+                src={hole.isWhacked && hole.character.hitImage ? hole.character.hitImage : hole.character.image}
                 alt={hole.character.name}
                 draggable={false}
               />

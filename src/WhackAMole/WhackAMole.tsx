@@ -5,18 +5,22 @@ import ScoreBoard from './components/ScoreBoard';
 import GameBoard from './components/GameBoard';
 import SplashScreen from './components/SplashScreen';
 import guitaristImg from './img/guitarist.png';
+import guitaristSurprisedImg from './img/guitarist_surprised.png';
 import hackerImg from './img/hacker.png';
+import hackerSurprisedImg from './img/hacker_surprised.png';
 import ghostImg from './img/ghost.png';
+import ghostSurprisedImg from './img/ghost_surprised.png';
 import coderImg from './img/coder.png';
+import coderSurprisedImg from './img/coder_surprised.png';
 import { useLocale } from './i18n';
 import aigramLogo from './img/aigram.svg';
 import './WhackAMole.less';
 
 const DEFAULT_CHARACTERS: Character[] = [
-  { id: 'guitarist', name: 'guitarist', image: guitaristImg, points: 20, weight: 2 },
-  { id: 'coder', name: 'coder', image: coderImg, points: 15, weight: 3 },
-  { id: 'hacker', name: 'hacker', image: hackerImg, points: 10, weight: 4 },
-  { id: 'ghost', name: 'ghost', image: ghostImg, points: -15, weight: 2 },
+  { id: 'guitarist', name: 'guitarist', image: guitaristImg, hitImage: guitaristSurprisedImg, points: 20, weight: 2 },
+  { id: 'coder', name: 'coder', image: coderImg, hitImage: coderSurprisedImg, points: 15, weight: 3 },
+  { id: 'hacker', name: 'hacker', image: hackerImg, hitImage: hackerSurprisedImg, points: 10, weight: 4 },
+  { id: 'ghost', name: 'ghost', image: ghostImg, hitImage: ghostSurprisedImg, points: -15, weight: 2 },
 ];
 
 const WhackAMole = React.memo(

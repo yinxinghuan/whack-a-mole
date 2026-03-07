@@ -2,6 +2,8 @@ export interface Character {
   id: string;
   name: string;
   image: string;
+  /** Image shown when the character is whacked */
+  hitImage?: string;
   points: number;
   /** Probability weight for random selection */
   weight: number;
