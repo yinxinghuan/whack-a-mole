@@ -1,3 +1,16 @@
+.wam-lb__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 200;  // 高于开始面板的 100
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  padding: 24px;
+  animation: wam-fade-in 0.3s ease-out;
+}
+
 .wam-lb {
   background: linear-gradient(160deg, #fff9f0 0%, #ffe8cc 50%, #fff3e0 100%);
   border-radius: 28px;

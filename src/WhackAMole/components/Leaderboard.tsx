@@ -36,7 +36,7 @@ export default function Leaderboard({ isInAigram, onClose, fetchGlobal, fetchFri
   useEffect(() => { load(tab); }, [tab]);
 
   return (
-    <div className="wam__overlay" onPointerDown={onClose}>
+    <div className="wam-lb__overlay" onPointerDown={onClose}>
       <div className="wam-lb" onPointerDown={e => e.stopPropagation()}>
 
         <div className="wam-lb__header">
