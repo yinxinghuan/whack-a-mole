@@ -1,9 +1,11 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useCallback, useState } from 'react';
 import type { WhackAMoleProps, Character } from './types';
 import { useWhackAMole } from './hooks/useWhackAMole';
+import { useGameScore } from './hooks/useGameScore';
 import ScoreBoard from './components/ScoreBoard';
 import GameBoard from './components/GameBoard';
 import SplashScreen from './components/SplashScreen';
+import Leaderboard from './components/Leaderboard';
 import guitaristImg from './img/guitarist.png';
 import guitaristSurprisedImg from './img/guitarist_surprised.png';
 import hackerImg from './img/hacker.png';
@@ -27,6 +29,13 @@ const WhackAMole = React.memo(
   forwardRef<HTMLDivElement, WhackAMoleProps>((props, ref) => {
     const { t } = useLocale();
     const [showSplash, setShowSplash] = useState(true);
+    const [showLeaderboard, setShowLeaderboard] = useState(false);
+    const {
+      isInAigram,
+      submitScore,
+      fetchGlobalLeaderboard,
+      fetchFriendsLeaderboard,
+    } = useGameScore('wam');
     const {
       totalTime = 30,
       gridSize = 3,
@@ -38,6 +47,11 @@ const WhackAMole = React.memo(
       onGameStart,
       onGameEnd,
     } = props;
+
+    const handleGameEnd = useCallback((finalScore: number) => {
+      submitScore(finalScore);
+      onGameEnd?.(finalScore);
+    }, [submitScore, onGameEnd]);
 
     const {
       score,
@@ -59,13 +73,21 @@ const WhackAMole = React.memo(
       characters,
       onScore,
       onGameStart,
-      onGameEnd,
+      onGameEnd: handleGameEnd,
     });
 
     return (
       <div className="wam" ref={ref}>
         <img className="wam__watermark" src={aigramLogo} alt="Aigram" draggable={false} />
         {showSplash && <SplashScreen onDone={() => setShowSplash(false)} />}
+        {showLeaderboard && (
+          <Leaderboard
+            isInAigram={isInAigram}
+            onClose={() => setShowLeaderboard(false)}
+            fetchGlobal={fetchGlobalLeaderboard}
+            fetchFriends={fetchFriendsLeaderboard}
+          />
+        )}
 
         {/* Start Modal */}
         {!isPlaying && !isGameOver && (
@@ -110,6 +132,12 @@ const WhackAMole = React.memo(
               {highScore > 0 && (
                 <p className="wam__modal-highscore">{t('highRecord', { n: highScore })}</p>
               )}
+              <button
+                className="wam__btn wam__btn--leaderboard"
+                onPointerDown={() => setShowLeaderboard(true)}
+              >
+                {t('lb.btn')}
+              </button>
             </div>
           </div>
         )}

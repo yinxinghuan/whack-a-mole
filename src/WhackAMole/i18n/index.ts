@@ -33,6 +33,13 @@ const translations = {
     'whack.ghost.0': '嘻嘻~扣分！',
     'whack.ghost.1': '中计啦！',
     'whack.ghost.2': '抓到我啦~',
+    'lb.title': '排行榜',
+    'lb.global': '🌍 全局榜',
+    'lb.friends': '👥 好友榜',
+    'lb.empty': '暂无记录，快来第一个上榜！',
+    'lb.error': '加载失败，请重试',
+    'lb.me': '我',
+    'lb.btn': '🏆 排行榜',
   },
   en: {
     subtitle: '🕳️ W H A C K - A - M O L E 🕳️',
@@ -65,6 +72,13 @@ const translations = {
     'whack.ghost.0': 'Hehe~ penalty!',
     'whack.ghost.1': 'Tricked ya!',
     'whack.ghost.2': 'You got me~',
+    'lb.title': 'Leaderboard',
+    'lb.global': '🌍 Global',
+    'lb.friends': '👥 Friends',
+    'lb.empty': 'No records yet. Be the first!',
+    'lb.error': 'Failed to load. Try again.',
+    'lb.me': 'me',
+    'lb.btn': '🏆 Leaderboard',
   },
 } as const;
 
