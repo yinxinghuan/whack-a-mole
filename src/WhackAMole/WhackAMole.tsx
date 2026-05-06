@@ -5,6 +5,7 @@ import { useGameScore, Leaderboard } from '@shared/leaderboard';
 import ScoreBoard from './components/ScoreBoard';
 import GameBoard from './components/GameBoard';
 import SplashScreen from './components/SplashScreen';
+import WamPopups from './components/WamPopups';
 import guitaristImg from './img/guitarist.png';
 import guitaristSurprisedImg from './img/guitarist_surprised.png';
 import hackerImg from './img/hacker.png';
@@ -92,6 +93,7 @@ const WhackAMole = React.memo(
         {/* Start Modal */}
         {!isPlaying && !isGameOver && (
           <div className="wam__overlay">
+            <WamPopups />
             <div className="wam__modal">
               {/* Hero title area */}
               <div className="wam__modal-hero">
