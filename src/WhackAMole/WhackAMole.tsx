@@ -33,9 +33,8 @@ const WhackAMole = React.memo(
     const {
       isInAigram,
       submitScore,
-      fetchGlobalLeaderboard,
-      fetchFriendsLeaderboard,
-    } = useGameScore('wam');
+      fetchLeaderboard,
+    } = useGameScore();
     const {
       totalTime = 30,
       gridSize = 3,
@@ -85,8 +84,7 @@ const WhackAMole = React.memo(
             gameName="Whack-A-Mole"
             isInAigram={isInAigram}
             onClose={() => setShowLeaderboard(false)}
-            fetchGlobal={fetchGlobalLeaderboard}
-            fetchFriends={fetchFriendsLeaderboard}
+            fetch={fetchLeaderboard}
           />
         )}
 
