@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  base: '/whack-a-mole/',
+  base: './',
   plugins: [react()],
   resolve: {
     alias: {
