@@ -50,7 +50,7 @@ export const useWhackAMole = (options: UseWhackAMoleOptions): UseWhackAMoleRetur
   const [combo, setCombo] = useState(0);
   const [highScore, setHighScore] = useState(() => {
     try {
-      return parseInt(localStorage.getItem('wam-highscore') || '0', 10);
+      return parseInt(alteruLocalStorage.getItem('wam-highscore') || '0', 10);
     } catch {
       return 0;
     }
@@ -195,7 +195,7 @@ export const useWhackAMole = (options: UseWhackAMoleOptions): UseWhackAMoleRetur
     setHighScore((prevHigh) => {
       const newHigh = Math.max(prevHigh, scoreRef.current);
       try {
-        localStorage.setItem('wam-highscore', String(newHigh));
+        alteruLocalStorage.setItem('wam-highscore', String(newHigh));
       } catch {
         // ignore
       }

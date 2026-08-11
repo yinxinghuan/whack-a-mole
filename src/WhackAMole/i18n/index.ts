@@ -74,7 +74,7 @@ type Locale = keyof typeof translations;
 
 function detectLocale(): Locale {
   const override =
-    typeof localStorage !== 'undefined' ? localStorage.getItem('wam_locale') : null;
+    typeof localStorage !== 'undefined' ? alteruLocalStorage.getItem('wam_locale') : null;
   if (override === 'en' || override === 'zh') return override;
   const lang = (typeof navigator !== 'undefined' ? navigator.language : 'en').toLowerCase();
   if (lang.startsWith('zh')) return 'zh';
